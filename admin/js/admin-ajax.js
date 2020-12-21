@@ -1,18 +1,14 @@
 $(document).ready(function(){
     var res= document.getElementById('resultado');
-    /* const aux= document.createElement('p');
-    aux.innerHTML="";
-    var cont= document.getElementById('contenedor'); */
 
     $('#consulta').on('submit', actualizar);
+
+    $('#registrarse').on('submit', registro);
 
     function actualizar(e){
         e.preventDefault();
         let datos= $(this).serializeArray();
         var error= document.getElementById('error');
-
-        const origen=$(this).attr('id'); 
-
         console.log(datos);
 
         if (validarcampos(datos)){
@@ -89,9 +85,48 @@ $(document).ready(function(){
             error.innerHTML="* Consulta vacía";
         }
         
+    };
+
+    function registro(e){
+        //e.preventDefault();
+        let datos= $(this).serializeArray();
+        var error= document.getElementById('error');
+
+        if (validarcampos(datos)){
+            error.style.display='none';
+            $.ajax({
+                type: $(this).attr('method'),
+                data: datos,
+                url: $(this).attr('action'),
+                dataType:'html',
+                success: function(data){
+                    console.log(data);
+
+                    if (data.res="exito"){
+                        swal.fire(
+                            'Usuario registrado!',
+                            '',
+                            'success'
+                          )
+                    } else {
+                        
+                        swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            text: 'No se pudo crear el usuario...',
+                          })
+                    }
+                },
+                error: function(XHR,status){
+                    console.log(XHR);
+                    console.log(status);
+                }
+            });
+        }else{
+            error.style.display="block";
+            error.innerHTML="* Consulta vacía";
+        }
     }
-
-
 
     $('#login-admin').on('submit', logeo);
     

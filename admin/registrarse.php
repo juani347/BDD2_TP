@@ -20,24 +20,26 @@
   <div class="login-box-body">
     <p class="login-box-msg">Nuevo usuario</p>
 
-    <form name="registrarse" id="registrarse" method="post" action="registrarse.php">
+    <form name="registrarse" id="registrarse" method="post" action="control-admin.php">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
         <span class="form-control-feedback"><i class="fa fa-user"></i></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" id="pass" name="password" placeholder="Contraseña">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
         <span class="form-control-feedback"><i class="fa fa-unlock-alt"></i></span>
       </div>
       <div class="form-group has-feedback">
         <input type="password" class="form-control" id="password_repit" name="password_repit" placeholder="Repetir contraseña">
+        <span id="resultado_password" class="help-block"></span>
         <span class="form-control-feedback"><i class="fa fa-unlock-alt"></i></span>
+        
       </div>
       <div class="row">
         <!-- /.col -->
         <div class="col-xs-12">
           <input type="hidden" name="registrarse" value="1">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">INICIAR SESIÓN</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" id="btn-new">CREAR</button>
         </div>
         <!-- /.col -->
       </div>

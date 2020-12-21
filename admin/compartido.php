@@ -2,15 +2,15 @@
 include_once 'funciones/sesion-admin.php';
 include_once 'templates/header.php';
 try {
-	include_once 'funciones/funciones.php';
-	$base=$_GET['base'];
-	$db4 = new mysqli('db4free.net','franross97',"franrossi97@gmail.com", $base,3306);
-	
-	if ($db4->connect_error){
-        echo $error->$db4->connect_error;
-    }
-	
-	$db4->set_charset('utf8');
+  include_once 'funciones/funciones.php';
+  $base = $_GET['base'];
+  $db4 = new mysqli('db4free.net', 'franross97', "franrossi97@gmail.com", $base, 3306);
+
+  if ($db4->connect_error) {
+    echo $error->$db4->connect_error;
+  }
+
+  $db4->set_charset('utf8');
 } catch (Exception $e) {
   echo "Error: " . $e->getMessage();
 }
@@ -55,38 +55,20 @@ try {
               </div>
               <div class="box-body">
                 <!-- CUERPO -->
-				<div class="alert alert-info" role="alert">
-  					Enviale el siguiente a otros usuarios para utilizar la base compartida: http://localhost:8080/admin/compartido.php?base=entorno_bdd
-				</div>
-                <div class="box box-info">
-                  <!-- /.box-header -->
-                  <!-- form start -->
-                  <form class="form-horizontal" name="consulta" id="consulta" method="post" action=<?php echo "compartido-control-bdd.php?base=".$base?> >
-                    <div class="box-body">
-                      <div class="form-group">
-                        <textarea name="query" type="text" class="form-control" rows="20" id="query" placeholder="">
-                      </textarea>
-                      </div>
-                      <div id="error" style="display: none"></div>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                      <input type="hidden" name="consulta" value="1">
-                      <button type="submit" class="btn btn-info pull-right">Ejecutar</button>
-                    </div>
-                    <!-- /.box-footer -->
-                  </form>
+                <div class="alert alert-info" role="alert">
+                  Compartí el siguiente enlace a otros usuarios: http://localhost:8080/admin/compartido.php?base=entorno_bdd
                 </div>
+                
               </div>
               <!-- /.box-body -->
             </div>
             <!-- /.box -->
 
-             <!--  RESULTADO ------------------------------------------------------------ -->
+            <!--  RESULTADO ------------------------------------------------------------ -->
 
-              <div id="resultado">
-              
-              </div> <!-- resultado -->
+            <div id="resultado">
+
+            </div> <!-- resultado -->
 
           </section>
           <!-- /.content -->

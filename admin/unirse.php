@@ -52,7 +52,7 @@ try {
                 <div class="box box-info">
                   <!-- /.box-header -->
                   <!-- form start -->
-                  <form class="form-horizontal" name="consulta" id="consulta" method="post" action="control-bdd.php">
+                  <form class="form-horizontal" name="consulta" id="consulta" method="post" action="control-bdd-grupal.php">
                     <div class="box-body">
                       <div class="form-group">
                         <textarea name="query" type="text" class="form-control" rows="20" id="query" placeholder=""></textarea>

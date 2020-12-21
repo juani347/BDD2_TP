@@ -21,6 +21,7 @@
                     session_start();
                     $_SESSION['usuario']= $user;
                     $_SESSION['id_user']= $id_user;
+                    $_SESSION['clave']= $password;
 
                     $respuesta= array(
                         'respuesta' => 'exito',

@@ -1,14 +1,35 @@
 <?php
-    include_once 'funciones/sesion-admin.php';
+    //include_once 'funciones/sesion-admin.php';
     include_once 'funciones/funciones.php';
-    $usuario= $_POST['usuario'];
 
-    if (isset($_POST['crear-admin'])){
+    if (isset($_POST['registrarse'])){
         $password= $_POST['password'];
-
+        $usuario= $_POST['usuario'];
         $password_hashed= password_hash($password, PASSWORD_BCRYPT);/* , $opciones */
                                                                // agrego ADMIN SISTEMA
+
+
+        $query=  " CREATE USER '" . $usuario . "'@'localhost' IDENTIFIED BY '" . $password ."'
+                    WITH MAX_QUERIES_PER_HOUR 30
+                    MAX_UPDATES_PER_HOUR 10
+                    MAX_CONNECTIONS_PER_HOUR 100
+                    MAX_USER_CONNECTIONS 2 ";
+        
+        $crear= $db->query($query);
+        
+        $sql_drop= "DROP DATABASE if exists entorno_bdd_" . $usuario;
+        $sql_bd= "CREATE DATABASE entorno_bdd_" . $usuario;
+
             try {
+                if ($crear === FALSE) {
+                    throw new Exception($db->error);
+                } else{
+                    $db->query($sql_drop);
+                    $bd= $db->query($sql_bd);
+                    if ($bd === FALSE) {
+                        throw new Exception($db->error);
+                    }
+                }
                 $stmt_admin= $db->prepare("INSERT INTO usuario (usuario, clave) VALUES(?,?)");
                 $stmt_admin->bind_param("ss", $usuario, $password_hashed);
                 $stmt_admin->execute();
@@ -27,6 +48,9 @@
                 $db->close();
             } catch (Exception $e) {
                 echo "Error: " . $e->getMessage();
+                $respuesta= array(
+                    'respuesta' => 'error',
+                );
             }
         
 

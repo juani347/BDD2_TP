@@ -23,9 +23,9 @@ $(document).ready(function () {
       }
     });
 
-    $('.content #btn-new').attr('disabled',true);
+    $('#btn-new').attr('disabled',true);
 
-    $('.content #password_repit').on('input', function(){
+    $('#password_repit').on('input', function(){
       var pass= $('#password').val();
 
       if ($(this).val() == pass){

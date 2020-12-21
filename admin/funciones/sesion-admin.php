@@ -1,7 +1,7 @@
 <?php
     function usuario_autentificado(){
         if (!revisar_usuario()){
-            header('Location: login-admin.php');
+            header('Location: registrarse.php');
             exit();
         };
     };
@@ -14,4 +14,5 @@
     usuario_autentificado();
 
     $id_user= $_SESSION['id_user'];
+    
 ?>
