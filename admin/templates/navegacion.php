@@ -35,7 +35,7 @@
           </li>
           <li class="treeview">
             <li>
-              <a href="#invitar">
+              <a href="compartido.php?base=entorno_bdd">
                 <i class="fa fa-id-card"></i>
                 <span>Invitar usuarios</span>
               </a>
