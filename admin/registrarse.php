@@ -35,6 +35,7 @@
         <span class="form-control-feedback"><i class="fa fa-unlock-alt"></i></span>
         
       </div>
+      <div id="error" style="display: none"></div>
       <div class="row">
         <!-- /.col -->
         <div class="col-xs-12">

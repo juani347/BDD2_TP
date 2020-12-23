@@ -27,7 +27,7 @@
           </li>
           <li class="treeview">
             <li>
-              <a href="#historial.php">
+              <a href="historial.php">
                 <i class="fa fa-calendar"></i>
                 <span>Historial</span>
               </a>

@@ -26,6 +26,8 @@
                 } else{
                     $db->query($sql_drop);
                     $bd= $db->query($sql_bd);
+                    $db->query("GRANT ALL PRIVILEGES ON entorno_bdd_" . $usuario . ".* TO '" . $usuario . "'@'localhost';");
+                    $db->query("FLUSH PRIVILEGES;");
                     if ($bd === FALSE) {
                         throw new Exception($db->error);
                     }

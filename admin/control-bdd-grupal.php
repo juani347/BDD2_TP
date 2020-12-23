@@ -8,8 +8,15 @@
     if ($db->connect_error) {
         echo $db->connect_error;
     }
-
     $db->set_charset('utf8');
+
+    $db_base = new mysqli('localhost','root','','entorno_bdd');
+    
+    //asigno privilegios
+    $db_base->query("GRANT ALL PRIVILEGES ON " . $base . " TO '" . $usuario . "'@'localhost'");
+    $db_base->query("FLUSH PRIVILEGES");
+
+    
     
     if (isset($_POST['consulta'])){
         $query= $_POST['query'];
@@ -26,7 +33,7 @@
                 throw new Exception($db->error);
             }else{
             
-                $stmt= $db->prepare("INSERT INTO registro (fecha, hora, consulta, id_user) VALUES(?,?,?,?)");
+                $stmt= $db_base->prepare("INSERT INTO registro (fecha, hora, consulta, id_user) VALUES(?,?,?,?)");
                 $stmt->bind_param("sssi", $fecha, $hora, $query, $id_user);
                 $stmt->execute();
 

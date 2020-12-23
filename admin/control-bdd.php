@@ -17,7 +17,7 @@
                 throw new Exception($db->error);
             }else{
             
-                $stmt= $db->prepare("INSERT INTO registro (fecha, hora, consulta, id_user) VALUES(?,?,?,?)");
+                $stmt= $db_base->prepare("INSERT INTO registro (fecha, hora, consulta, id_user) VALUES(?,?,?,?)");
                 $stmt->bind_param("sssi", $fecha, $hora, $query, $id_user);
                 $stmt->execute();
 
@@ -33,7 +33,7 @@
                 }; */
 
                 $stmt->close();
-                $db->close();
+                $db_base->close();
                
                 if ((strpos($query, "SELECT") !== false && strpos($query, "SELECT") == 0) || (strpos($query, "EXPLAIN") !== false && strpos($query, "EXPLAIN") == 0)) { //&& str_replace(' ', '',$_POST['query'])!=''
                     while ($rta = $tuplas->fetch_assoc()) {
