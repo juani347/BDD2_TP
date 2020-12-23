@@ -28,7 +28,7 @@ try {
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Realizar consultas en la base compartida
+          Realiza consultas en la base compartida
         </h1>
       </section>
       <div class="centrar-contenido">
@@ -62,6 +62,9 @@ try {
                     <!-- /.box-body -->
                     <div class="box-footer">
                       <input type="hidden" name="consulta" value="1">
+                      <input type="hidden" name="servidor" value="<?php echo $_GET['servidor']?>">
+                      <input type="hidden" name="base" value="<?php echo $_GET['base']?>">
+                      <input type="hidden" name="puerto" value="<?php echo $_GET['puerto']?>">
                       <button type="submit" class="btn btn-info pull-right">Ejecutar</button>
                     </div>
                     <!-- /.box-footer -->

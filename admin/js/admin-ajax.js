@@ -1,11 +1,11 @@
 $(document).ready(function(){
     var res= document.getElementById('resultado');
 
-    $('#consulta').on('submit', actualizar);
+    $('#consulta').on('submit', consultar);
 
     $('#registrarse').on('submit', registro);
 
-    function actualizar(e){
+    function consultar(e){
         e.preventDefault();
         let datos= $(this).serializeArray();
         var error= document.getElementById('error');
@@ -21,32 +21,25 @@ $(document).ready(function(){
                 //async: false,
                 success: function(data){
                     console.log(data);
-                    /* jQuery('[id="resultado"]').removeClass('oculto');
-                    jQuery('[id="resultado"]').addClass('mostrar'); */
-                    //$(".content").load(" #resultado"); // > *"
-
-                    //$("#resultado").load(" #resultado");
-                       // var aux2= document.getElementById('tabla').innerHTML;
-                      //  var aux= document.createElement('p');
-                        
-                    //aux.innerHTML= "";
                     
-                    //cont.appendChild(res);
-                    //document.getElementById('resultado').appendChild(aux);
-                    
-                    var cond;
-                    if (data.includes('div')){
+                    var cond=false;
+                    var msj;
+                    if (data.includes('<div')){ //devuelve registros
                         const div= document.createElement('div');
                         div.innerHTML=data;
-                        res.appendChild(div);
+                        msj= div;
                         cond=true;
                     }
                     else{
-                        cond= data.includes('p');
+                        cond= data.includes('<p>');
                         const p= document.createElement('p');
-                        p.innerHTML=data;
-                        res.appendChild(p);
-                    }
+                        if (!cond){ //hubo un error
+                            p.innerHTML=data.substr(data.indexOf('"Problema'));
+                        }else{
+                            p.innerHTML=data;
+                        }
+                        msj=p;
+                    };
 
                     if (cond){
                         swal.fire(
@@ -54,14 +47,15 @@ $(document).ready(function(){
                             '',
                             'success'
                           )
-                    } else {
                         
+                    } else {
                         swal.fire({
                             icon: 'error',
                             title: 'Error!',
                             text: 'No se pudo realizar la consultar...',
                           })
                     }
+                    res.appendChild(msj);
                 },
                 error: function(XHR,status){
                     console.log(XHR);
@@ -88,7 +82,7 @@ $(document).ready(function(){
     };
 
     function registro(e){
-        //e.preventDefault();
+        e.preventDefault();
         let datos= $(this).serializeArray();
         var error= document.getElementById('error');
 

@@ -40,7 +40,8 @@
                   <tr>
                     <th class="col-md-2">Fecha</th>
                     <th class="col-md-2">Hora</th>
-                    <th class="col-md-8">Consulta</th>
+                    <th class="col-md-2">Base</th>
+                    <th class="col-md-6">Consulta</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -49,7 +50,7 @@
                   try{
                     include_once 'funciones/funciones.php';
                     $sql= "
-                    SELECT r.fecha, r.hora, r.consulta
+                    SELECT r.fecha, r.hora, r.consulta, r.base
                     FROM registro r
                     WHERE r.id_user=". $id_user ."
                     ORDER BY r.fecha, r.hora";
@@ -63,6 +64,7 @@
                   <tr>
                     <td><?php echo utf8_encode(strftime("%d-%m-%Y", strtotime($registro['fecha']))); ?></td>
                     <td> <?php echo date_format(date_create($registro['hora']), 'H:i'); ?></td>
+                    <td> <?php echo $registro['base']; ?></td>
                     <td> <?php echo $registro['consulta']; ?></td>
                   </tr>
                   <?php

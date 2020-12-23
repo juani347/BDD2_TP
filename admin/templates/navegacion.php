@@ -20,7 +20,7 @@
           <li class="treeview">
             <li>
               <a href="consultar.php">
-                <i class="fa fa-user"></i>
+                <i class="fa fa-pencil"></i>
                 <span>Realizar consultas</span>
               </a>
             </li>
@@ -28,7 +28,7 @@
           <li class="treeview">
             <li>
               <a href="historial.php">
-                <i class="fa fa-calendar"></i>
+                <i class="fa fa-list-alt"></i>
                 <span>Historial</span>
               </a>
             </li>
@@ -36,7 +36,7 @@
           <li class="treeview">
             <li>
               <a href="compartido.php">
-                <i class="fa fa-id-card"></i>
+                <i class="fa fa-share-alt"></i>
                 <span>Prácticas en grupo</span>
               </a>
             </li>

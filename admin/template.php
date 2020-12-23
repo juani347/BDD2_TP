@@ -59,19 +59,19 @@ try {
                       <textarea name="ejemplo" type="text" class="form-control" rows="20" id="ejempl" placeholder="">
 CREATE TABLE IF NOT EXISTS Empleados
 (
-	id_empleado int(6),
+	id_empleado int(6) AUTO_INCREMENT,
 	nombre varchar(30),
 	apellido varchar(30),
 	mail varchar(30),
 	sueldo float,
 	id_departamento int(4),
-	PRIMARY KEY ('id_empleado')
+	PRIMARY KEY (id_empleado)
 )
 
 INSERT INTO Empleados (id_empleado, nombre, apellido, sueldo, mail, id_departamento) VALUES
-	(1,'Franco','Martinez',76000,'franmart99@gmail.com',2)
-	(2,'Juan','López',70000,'juanlop3z98@gmail.com',1)
-	(3,'Gregorio','Marquez',62000,'gregmarquez@hotmail.com',2)
+	(1,'Franco','Martinez',76000,'franmart99@gmail.com',2),
+	(2,'Juan','López',70000,'juanlop3z98@gmail.com',1),
+	(3,'Gregorio','Marquez',62000,'gregmarquez@hotmail.com',2),
 	(4,'Manuel','Barré',48000,'manubarre@gmail.com',3)
 
 

@@ -1,17 +1,15 @@
 <?php
-    //include_once 'funciones/sesion-admin.php';
     include_once 'funciones/funciones.php';
 
     if (isset($_POST['registrarse'])){
         $password= $_POST['password'];
         $usuario= $_POST['usuario'];
-        $password_hashed= password_hash($password, PASSWORD_BCRYPT);/* , $opciones */
-                                                               // agrego ADMIN SISTEMA
+        $password_hashed= password_hash($password, PASSWORD_BCRYPT);
 
-
+        //Creacion del usuario y LIMITACIONES
         $query=  " CREATE USER '" . $usuario . "'@'localhost' IDENTIFIED BY '" . $password ."'
-                    WITH MAX_QUERIES_PER_HOUR 30
-                    MAX_UPDATES_PER_HOUR 10
+                    WITH MAX_QUERIES_PER_HOUR 100
+                    MAX_UPDATES_PER_HOUR 40
                     MAX_CONNECTIONS_PER_HOUR 100
                     MAX_USER_CONNECTIONS 2 ";
         
@@ -25,12 +23,13 @@
                     throw new Exception($db->error);
                 } else{
                     $db->query($sql_drop);
+
+                    //Creamos la base del usuario
                     $bd= $db->query($sql_bd);
+
+                    //Asignamos los privilegios
                     $db->query("GRANT ALL PRIVILEGES ON entorno_bdd_" . $usuario . ".* TO '" . $usuario . "'@'localhost';");
                     $db->query("FLUSH PRIVILEGES;");
-                    if ($bd === FALSE) {
-                        throw new Exception($db->error);
-                    }
                 }
                 $stmt_admin= $db->prepare("INSERT INTO usuario (usuario, clave) VALUES(?,?)");
                 $stmt_admin->bind_param("ss", $usuario, $password_hashed);

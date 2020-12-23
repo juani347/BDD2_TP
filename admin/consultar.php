@@ -28,7 +28,7 @@ try {
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Realizar consultas
+          Realiza consultas en tu base
         </h1>
       </section>
       <div class="centrar-contenido">
