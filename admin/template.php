@@ -57,7 +57,7 @@ try {
                   <div class="box-body">
                     <div class="form-group">
                       <textarea name="ejemplo" type="text" class="form-control" rows="20" id="ejempl" placeholder="">
-CREATE TABLE IF NOT EXISTS Empleados
+CREATE TABLE IF NOT EXISTS empleados
 (
 	id_empleado int(6) AUTO_INCREMENT,
 	nombre varchar(30),
@@ -69,10 +69,10 @@ CREATE TABLE IF NOT EXISTS Empleados
 )
 
 INSERT INTO empleados (id_empleado, nombre, apellido, sueldo, mail, id_departamento) VALUES
-	(1,'Franco','Martinez',76000,'franmart99@gmail.com',2),
-	(2,'Juan','López',70000,'juanlop3z98@gmail.com',1),
-	(3,'Gregorio','Marquez',62000,'gregmarquez@hotmail.com',2),
-	(4,'Manuel','Barré',48000,'manubarre@gmail.com',3);
+	('Franco','Martinez',76000,'franmart99@gmail.com',2),
+	('Juan','López',70000,'juanlop3z98@gmail.com',1),
+	('Gregorio','Marquez',62000,'gregmarquez@hotmail.com',2),
+	('Manuel','Barré',48000,'manubarre@gmail.com',3);
 
 
 SELECT *

@@ -101,6 +101,9 @@
                 <?php
                 } // if SELECT
                 else{
+                    if (stripos($query, "CREATE TABLE") !== false){
+                        $db->query("ALTER TABLE tablename MAX_ROWS=200");
+                    }
                     ?>
                     <p><?php echo $tiempo?></p>
                     <?php
