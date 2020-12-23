@@ -3,8 +3,8 @@
         $servidor='localhost';
         $base= 'entorno_bdd_'. $_SESSION['usuario'];
         $puerto='3306';
-        $db = new mysqli($servidor, $_SESSION['usuario'], $_SESSION['clave'], $base, $puerto);
-        $db_base = new mysqli('localhost','root','','entorno_bdd');
+        $db = new mysqli($servidor, $_SESSION['usuario'], $_SESSION['clave'], $base, $puerto); //Base del usuario
+        $db_base = new mysqli('localhost','root','','entorno_bdd'); //Base principal del sistema
     }
     else{
         $db = new mysqli('localhost','root','','entorno_bdd');

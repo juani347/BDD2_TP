@@ -6,6 +6,15 @@ try {
 } catch (Exception $e) {
   echo "Error: " . $e->getMessage();
 }
+
+$servidor= $_GET['servidor'];
+$base= $_GET['base'];
+$usuario = $_SESSION['usuario'];
+
+//Asigno PRIVILEGIOS
+$db_base->query("GRANT ALL PRIVILEGES ON " . $base . ".* TO '" . $usuario . "'@'" . $servidor . "'");
+$db_base->query("FLUSH PRIVILEGES");
+
 ?>
 
 

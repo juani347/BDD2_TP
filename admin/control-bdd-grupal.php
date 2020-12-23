@@ -1,6 +1,7 @@
 <?php
 include_once 'funciones/sesion-admin.php';
-$db_base = new mysqli('localhost', 'root', '', 'entorno_bdd');
+
+$db_base = new mysqli('localhost', 'root', '', 'entorno_bdd');  //Base principal del sistema
 $usuario = $_SESSION['usuario'];
 if (isset($_POST['consulta'])) {
 
@@ -8,11 +9,7 @@ if (isset($_POST['consulta'])) {
     $servidor = $_POST['servidor'];
     $puerto = $_POST['puerto'];
 
-    //Asigno PRIVILEGIOS
-    $db_base->query("GRANT ALL PRIVILEGES ON " . $base . ".* TO '" . $usuario . "'@'" . $servidor . "'");
-    $db_base->query("FLUSH PRIVILEGES");
-
-    $db = new mysqli($servidor, $usuario, $_SESSION['clave'], $base, $puerto);
+    $db = new mysqli($servidor, $usuario, $_SESSION['clave'], $base, $puerto); //Conexion a la base compartida
 
     if ($db->connect_error) {
         echo $db->connect_error;

@@ -68,20 +68,26 @@ CREATE TABLE IF NOT EXISTS Empleados
 	PRIMARY KEY (id_empleado)
 )
 
-INSERT INTO Empleados (id_empleado, nombre, apellido, sueldo, mail, id_departamento) VALUES
+INSERT INTO empleados (id_empleado, nombre, apellido, sueldo, mail, id_departamento) VALUES
 	(1,'Franco','Martinez',76000,'franmart99@gmail.com',2),
 	(2,'Juan','López',70000,'juanlop3z98@gmail.com',1),
 	(3,'Gregorio','Marquez',62000,'gregmarquez@hotmail.com',2),
-	(4,'Manuel','Barré',48000,'manubarre@gmail.com',3)
+	(4,'Manuel','Barré',48000,'manubarre@gmail.com',3);
 
 
 SELECT *
-FROM Empleados e
-WHERE e.nombre='Franco'
+FROM empleados e
+WHERE e.nombre='Franco';
 
 SELECT *
-FROM Empleados e
-WHERE e.sueldo < (SELECT AVG(r.sueldo) FROM Empleados r)
+FROM empleados e
+WHERE e.sueldo < (SELECT AVG(r.sueldo) FROM Empleados r);
+
+
+UPDATE empleados e SET e.sueldo=50000 WHERE e.id_empleado=1;
+
+
+DELETE FROM empleados e WHERE e.id_empleado=1;
 
                       </textarea>
                     </div>
