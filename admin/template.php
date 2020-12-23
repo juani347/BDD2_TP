@@ -57,32 +57,31 @@ try {
                   <div class="box-body">
                     <div class="form-group">
                       <textarea name="ejemplo" type="text" class="form-control" rows="20" id="ejempl" placeholder="">
-                      CREATE TABLE IF NOT EXIST 'Empleados'
-                        (
-                            'id_empleado' int(6) unsigned NOT NULL,
-                            'nombre' varchar(30) unsigned NOT NULL,
-                            'apellido' varchar(30) unsigned NOT NULL,
-                            'mail' varchar(30) unsigned NOT NULL,
-                            'sueldo' float unsigned NOT NULL,
-                            'id_departamento' int(4) unsigned NOT NULL,
-                            PRIMARY KEY ('id_empleado')
-                        )
+CREATE TABLE IF NOT EXISTS Empleados
+(
+	id_empleado int(6),
+	nombre varchar(30),
+	apellido varchar(30),
+	mail varchar(30),
+	sueldo float,
+	id_departamento int(4),
+	PRIMARY KEY ('id_empleado')
+)
+
+INSERT INTO Empleados (id_empleado, nombre, apellido, sueldo, mail, id_departamento) VALUES
+	(1,'Franco','Martinez',76000,'franmart99@gmail.com',2)
+	(2,'Juan','López',70000,'juanlop3z98@gmail.com',1)
+	(3,'Gregorio','Marquez',62000,'gregmarquez@hotmail.com',2)
+	(4,'Manuel','Barré',48000,'manubarre@gmail.com',3)
 
 
-                        INSERT INTO 'Empleados' ('id_empleado','nombre','apellido','sueldo' ,'mail','id_departamento') VALUES
-                            (1,'Franco','Martinez',76000,'franmart99@gmail.com',2)
-                            (2,'Juan','López',70000,'juanlop3z98@gmail.com',1)
-                            (3,'Gregorio','Marquez',62000,'gregmarquez@hotmail.com',2)
-                            (4,'Manuel','Barré',48000,'manubarre@gmail.com',3)
+SELECT *
+FROM Empleados e
+WHERE e.nombre='Franco'
 
-
-                        SELECT *
-                        FROM Empleados e
-                        WHERE e.nombre='Franco'
-
-                        SELECT *
-                        FROM Empleados e
-                        WHERE e.sueldo < (SELECT AVG(r.sueldo) FROM Empleados r)
+SELECT *
+FROM Empleados e
+WHERE e.sueldo < (SELECT AVG(r.sueldo) FROM Empleados r)
 
                       </textarea>
                     </div>

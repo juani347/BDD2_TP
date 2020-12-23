@@ -10,6 +10,7 @@
         $respuesta;
         try {
             $start = microtime(true);
+			$tuplas=null;
             $tuplas= $db->query($query);
             $end = microtime(true);
             $tiempo= "La consulta tardó " . round(($end - $start), 6). " segundos.";
@@ -54,6 +55,8 @@
                                 <thead>
                                 <tr>
                                     <?php
+									if($tuplas->num_rows != 0)
+									{
                                     for ($i=0; $i<count($indices); $i++){
                                         ?>
                                         <th class="col-xs-2"><?php echo $indices[$i]?></th>
@@ -65,11 +68,15 @@
                                 <tbody>
                                     <tr>
                                     <?php
-                                    for ($i=0; $i<count($valores); $i++){
+                                    for ($i=0; $i<count($valores); $i++)
+									{
                                         ?>
                                         <td><?php echo $valores[$i]; ?></td>
                                         <?php
                                     }
+									}
+									else
+										echo "No existen datos para su consulta."
                                     ?>
 
                                     </tr>
